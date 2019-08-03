@@ -1,4 +1,4 @@
-package my.learning.project.Controller;
+package my.learning.project;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

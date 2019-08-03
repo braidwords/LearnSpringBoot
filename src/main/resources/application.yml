@@ -1,11 +1,3 @@
-logging:
-    level:
-        org:
-            springframework:
-                web: TRACE
-            hibernate: TRACE
-    pattern:
-        console: '%d{yyyy-MM-dd HH:mm:ss} - %msg%n'
 server:
     port: 8090
 spring:

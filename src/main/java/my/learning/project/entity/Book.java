@@ -1,12 +1,17 @@
-package my.learning.project.books;
+package my.learning.project.entity;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
-public class Book {
+import javax.persistence.Entity;
+import java.io.Serializable;
 
+@Entity
+public class Book implements Serializable {
+
+    @Id
+/*    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
     private int id;
+
     private String name;
 
     public int getId() {
