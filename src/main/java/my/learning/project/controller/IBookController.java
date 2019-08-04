@@ -1,10 +1,9 @@
 package my.learning.project.controller;
 
 import my.learning.project.entity.Book;
-
 import java.util.List;
 
-public interface BookControllerInterface {
+public interface IBookController {
 
     /**
      * GET request to fetch all books

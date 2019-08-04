@@ -1,35 +1,30 @@
 package my.learning.project.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import javax.persistence.Id;
-
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book implements Serializable {
 
     @Id
-/*    @GeneratedValue(strategy = GenerationType.IDENTITY)*/
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     private String name;
 
-    public int getId() {
+    private Integer noOfCopies;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "book_user", joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Set<User> users = new HashSet<>();
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Book() {
-    }
-
-    public Book(String name, int id) {
-        this.name = name;
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -41,5 +36,19 @@ public class Book implements Serializable {
         this.name = name;
     }
 
+    public Integer getNoOfCopies() {
+        return noOfCopies;
+    }
 
+    public void setNoOfCopies(Integer noOfCopies) {
+        this.noOfCopies = noOfCopies;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
