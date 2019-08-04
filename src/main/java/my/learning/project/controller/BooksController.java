@@ -21,8 +21,10 @@ public class BooksController implements BookControllerInterface {
     }
 
     @Override
-    public Book getSpecificBook(int id) {
-        return null;
+    @GetMapping("/{id}")
+    public Book getSpecificBook(@PathVariable int id) {
+        return booksService.getSpecificBook(id);
+
     }
 
     @PostMapping
@@ -32,13 +34,19 @@ public class BooksController implements BookControllerInterface {
     }
 
     @Override
-    public Book updateBook(Book book) {
-        return null;
+    @PutMapping
+    @ResponseBody
+    public Book updateBook(@RequestBody Book book) {
+
+        return booksService.updateBook(book);
     }
 
     @Override
-    public String deleteBook(int id) {
-        return null;
+    @DeleteMapping("{id}")
+    public String deleteBook(@PathVariable  int id) {
+
+        booksService.deleteBook(id);
+        return "Deleted";
     }
 
 }

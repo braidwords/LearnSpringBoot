@@ -14,11 +14,29 @@ public class BooksService {
     public BookRepository bookRepository;
 
     public List<Book> getAllBooks() {
+
         return bookRepository.findAll();
     }
 
     public Book addBook(Book book) {
         return bookRepository.save(book);
+    }
+
+
+    public Book getSpecificBook(int i)
+    {
+        return bookRepository.getOne(i);
+    }
+
+    public Book updateBook(Book book)
+    {
+        return bookRepository.save(book);
+    }
+
+    public String deleteBook(int id)
+    {
+        bookRepository.deleteById(id);
+        return"Book deleted";
     }
 }
 

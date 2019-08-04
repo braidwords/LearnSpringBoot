@@ -1,11 +1,14 @@
 package my.learning.project.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Id;
 
 import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Book implements Serializable {
 
     @Id
