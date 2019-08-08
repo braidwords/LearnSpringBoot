@@ -1,5 +1,6 @@
 server:
     port: 8080
+
 spring:
     datasource:
         driverClassName: org.h2.Driver
@@ -13,8 +14,9 @@ spring:
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         show-sql: true
+        generate-ddl: true
         hibernate:
-            ddl-auto: none
+            ddl-auto: create-drop
             id:
                 new_generator_mappings: true
         properties:

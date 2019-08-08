@@ -1,6 +1,6 @@
 package my.learning.project.controller;
 
-import my.learning.project.entity.Book;
+import my.learning.project.schema.Books;
 import java.util.List;
 
 public interface IBookController {
@@ -9,28 +9,28 @@ public interface IBookController {
      * GET request to fetch all books
      * @return list of all Book
      */
-    List<Book> getAllBooks();
+    List<Books> getAllBooks();
 
     /**
      * GET request to fetch specific book
      * @param id ID of the book to be fetched
      * @return requested Book
      */
-    Book getSpecificBook(int id);
+    Books getSpecificBook(int id);
 
     /**
      * POST request to add a new Book
      * @param book Details of Book to be added
      * @return Newly created Book
      */
-    Book addBook(Book book);
+    Books addBook(Books book);
 
     /**
      * PUT request to update an existing book
      * @param book Book to be updated
      * @return Updated Book
      */
-    Book updateBook(Book book);
+    Books updateBook(Books book);
 
     /**
      * Delete a specific Book

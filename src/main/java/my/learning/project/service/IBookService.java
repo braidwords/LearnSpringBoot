@@ -1,17 +1,18 @@
 package my.learning.project.service;
 
-import my.learning.project.entity.Book;
+import my.learning.project.schema.Books;
+
 import java.util.List;
 
 public interface IBookService {
 
-    List<Book> getAllBooks();
+    List<Books> getAllBooks();
 
-    Book addBook(Book book);
+    Books addBook(Books book);
 
-    Book getSpecificBook(int i);
+    Books getSpecificBook(int i);
 
-    Book updateBook(Book book);
+    Books updateBook(Books book);
 
     void deleteBook(int id);
 

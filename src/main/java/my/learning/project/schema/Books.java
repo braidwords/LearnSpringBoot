@@ -1,24 +1,18 @@
-package my.learning.project.entity;
+package my.learning.project.schema;
 
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-public class Book implements Serializable {
+public class Books implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String name;
 
     private Integer noOfCopies;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "book_user", joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
-    private Set<User> users = new HashSet<>();
+    private Set<Integer> users = new HashSet<>();
 
     public Integer getId() {
         return id;
@@ -44,11 +38,11 @@ public class Book implements Serializable {
         this.noOfCopies = noOfCopies;
     }
 
-    public Set<User> getUsers() {
+    public Set<Integer> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Set<Integer> users) {
         this.users = users;
     }
 }

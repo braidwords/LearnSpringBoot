@@ -1,6 +1,6 @@
 package my.learning.project.service;
 
-import my.learning.project.entity.User;
+import my.learning.project.domain.User;
 
 public interface ILibraryService {
 
@@ -8,5 +8,5 @@ public interface ILibraryService {
 
     User returnBook(Integer userID, Integer bookID) throws Exception;
 
-    Boolean isBookAvailable(Integer bookID) ;
+    String isBookAvailable(Integer bookID) throws Exception;
 }

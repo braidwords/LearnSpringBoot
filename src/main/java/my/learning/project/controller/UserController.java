@@ -1,10 +1,9 @@
 package my.learning.project.controller;
 
-import my.learning.project.entity.User;
+import my.learning.project.schema.Users;
 import my.learning.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -16,25 +15,25 @@ public class UserController implements IUserController {
 
     @GetMapping
     @ResponseBody
-    public List<User> getAllUser() {
+    public List<Users> getAllUser() {
         return userService.getAllUser();
     }
 
     @ResponseBody
     @GetMapping("/{id}")
-    public User getSpecificUser(int id) {
+    public Users getSpecificUser(int id) {
         return userService.getSpecificUser(id);
     }
 
     @PostMapping
     @ResponseBody
-    public User addUser(User user) {
+    public Users addUser(@RequestBody Users user) {
         return userService.addUser(user);
     }
 
     @PutMapping
     @ResponseBody
-    public User updateUser(User user) {
+    public Users updateUser(@RequestBody Users user) {
         return userService.updateUser(user);
     }
 

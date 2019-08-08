@@ -1,4 +1,6 @@
-package my.learning.project.entity;
+package my.learning.project.domain;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -6,10 +8,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String name;
@@ -18,7 +21,8 @@ public class User implements Serializable {
 
     private String emailID;
 
-    @OneToMany(mappedBy = "users")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_book", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
     private Set<Book> books = new HashSet<>();
 
     public Integer getId() {

@@ -1,10 +1,13 @@
 package my.learning.project.service;
 
-import my.learning.project.entity.User;
+import my.learning.project.repo.BookRepository;
 import my.learning.project.repo.UserRepository;
+import my.learning.project.schema.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+
+import static my.learning.project.utils.UserUtils.*;
 
 @Service
 public class UserService implements IUserService {
@@ -12,24 +15,27 @@ public class UserService implements IUserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BookRepository bookRepository;
+
     @Override
-    public List<User> getAllUser() {
-        return userRepository.findAll();
+    public List<Users> getAllUser() {
+        return domainToSchemaUserList(userRepository.findAll());
     }
 
     @Override
-    public User getSpecificUser(int id) {
-        return userRepository.getOne(id);
+    public Users getSpecificUser(int id) {
+        return domainToSchemaUser(userRepository.getOne(id));
     }
 
     @Override
-    public User addUser(User user) {
-        return userRepository.save(user);
+    public Users addUser(Users user) {
+        return domainToSchemaUser(userRepository.save(schemaToDomainUser(user, bookRepository)));
     }
 
     @Override
-    public User updateUser(User user) {
-        return userRepository.save(user);
+    public Users updateUser(Users user) {
+        return domainToSchemaUser(userRepository.save(schemaToDomainUser(user, bookRepository)));
     }
 
     @Override

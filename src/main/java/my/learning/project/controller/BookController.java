@@ -1,6 +1,6 @@
 package my.learning.project.controller;
 
-import my.learning.project.entity.Book;
+import my.learning.project.schema.Books;
 import my.learning.project.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -15,24 +15,24 @@ public class BookController implements IBookController {
 
     @GetMapping
     @ResponseBody
-    public List<Book> getAllBooks() {
+    public List<Books> getAllBooks() {
         return booksService.getAllBooks();
     }
 
     @GetMapping("/{id}")
-    public Book getSpecificBook(@PathVariable int id) {
+    public Books getSpecificBook(@PathVariable int id) {
         return booksService.getSpecificBook(id);
     }
 
     @PostMapping
     @ResponseBody
-    public Book addBook(@RequestBody Book book) {
+    public Books addBook(@RequestBody Books book) {
         return booksService.addBook(book);
     }
 
     @PutMapping
     @ResponseBody
-    public Book updateBook(@RequestBody Book book) {
+    public Books updateBook(@RequestBody Books book) {
         return booksService.updateBook(book);
     }
 
