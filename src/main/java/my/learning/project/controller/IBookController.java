@@ -1,5 +1,6 @@
 package my.learning.project.controller;
 
+import my.learning.project.exception.NotFoundException;
 import my.learning.project.schema.Books;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface IBookController {
      * @param id ID of the book to be fetched
      * @return requested Book
      */
-    Books getSpecificBook(int id);
+    Books getSpecificBook(int id) throws NotFoundException;
 
     /**
      * POST request to add a new Book

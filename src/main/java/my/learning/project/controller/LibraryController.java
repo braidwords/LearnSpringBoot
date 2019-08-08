@@ -1,6 +1,5 @@
 package my.learning.project.controller;
 
-import my.learning.project.domain.User;
 import my.learning.project.schema.Users;
 import my.learning.project.service.LibraryService;
 import my.learning.project.service.UserService;
@@ -20,19 +19,19 @@ public class LibraryController implements ILibraryController {
     @GetMapping
     @ResponseBody
     public Users issueOrReturnBook(@RequestParam(name = "userid") Integer userID, @RequestParam(name = "bookid") Integer bookID, @RequestParam(name = "type") Character type) throws Exception {
-        User user;
+        Users user;
         if (type == 'I') {
-            user= libraryService.issueBook(userID, bookID);
+            user = libraryService.issueBook(userID, bookID);
         } else if (type == 'R') {
-            user= libraryService.returnBook(userID, bookID);
+            user = libraryService.returnBook(userID, bookID);
         } else {
             throw new Exception("Only I (Issue) and R (Return) are allowed in the request along with userid and bookid");
         }
-        return userService.getSpecificUser(userID);
+        return user;
     }
 
     @GetMapping("/{bookid}")
-    public String isBookAvailable(@PathVariable Integer bookID) throws Exception {
-        return libraryService.isBookAvailable(bookID);
+    public String isBookAvailable(@PathVariable Integer bookid) throws Exception {
+        return libraryService.isBookAvailable(bookid);
     }
 }

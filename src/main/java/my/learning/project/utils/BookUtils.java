@@ -2,9 +2,9 @@ package my.learning.project.utils;
 
 import my.learning.project.domain.Book;
 import my.learning.project.domain.User;
+import my.learning.project.repo.BookRepository;
 import my.learning.project.repo.UserRepository;
 import my.learning.project.schema.Books;
-import my.learning.project.schema.Users;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,14 +32,14 @@ public class BookUtils {
         return booksList;
     }
 
-    public static Book schemaToDomainBook(Books bookDomain, UserRepository userRepository) {
-        Book bookSchema = new Book();
-        bookSchema.setId(bookDomain.getId());
-        bookSchema.setName(bookDomain.getName());
-        bookSchema.setNoOfCopies(bookDomain.getNoOfCopies());
-        for (Integer userId : bookDomain.getUsers()) {
-            bookSchema.getUsers().add(userRepository.getOne(userId));
+    public static Book schemaToDomainBook(Books bookSchema, UserRepository userRepository, BookRepository bookRepository) {
+        Book bookDomain = bookSchema.getId() == null ? new Book() : bookRepository.getOne(bookSchema.getId());
+        bookDomain.setId(bookSchema.getId());
+        bookDomain.setName(bookSchema.getName());
+        bookDomain.setNoOfCopies(bookSchema.getNoOfCopies());
+        for (Integer userId : bookSchema.getUsers()) {
+            bookDomain.getUsers().add(userRepository.getOne(userId));
         }
-        return bookSchema;
+        return bookDomain;
     }
 }

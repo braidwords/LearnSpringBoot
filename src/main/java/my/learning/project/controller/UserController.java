@@ -1,5 +1,6 @@
 package my.learning.project.controller;
 
+import my.learning.project.exception.NotFoundException;
 import my.learning.project.schema.Users;
 import my.learning.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class UserController implements IUserController {
 
     @ResponseBody
     @GetMapping("/{id}")
-    public Users getSpecificUser(int id) {
+    public Users getSpecificUser(int id) throws NotFoundException {
         return userService.getSpecificUser(id);
     }
 
@@ -39,7 +40,7 @@ public class UserController implements IUserController {
 
     @ResponseBody
     @DeleteMapping("/{id}")
-    public String deleteUser(int id) {
+    public String deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
         return String.format("User with ID : {%s} deleted", id);
     }

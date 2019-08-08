@@ -1,6 +1,7 @@
 package my.learning.project.service;
 
 
+import my.learning.project.exception.NotFoundException;
 import my.learning.project.schema.Users;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface IUserService {
      * @param id ID of the user to be fetched
      * @return requested user
      */
-    Users getSpecificUser(int id);
+    Users getSpecificUser(int id) throws NotFoundException;
 
     /**
      * POST request to add a new user

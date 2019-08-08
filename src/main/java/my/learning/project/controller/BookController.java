@@ -1,5 +1,6 @@
 package my.learning.project.controller;
 
+import my.learning.project.exception.NotFoundException;
 import my.learning.project.schema.Books;
 import my.learning.project.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class BookController implements IBookController {
     }
 
     @GetMapping("/{id}")
-    public Books getSpecificBook(@PathVariable int id) {
+    public Books getSpecificBook(@PathVariable int id) throws NotFoundException {
         return booksService.getSpecificBook(id);
     }
 
