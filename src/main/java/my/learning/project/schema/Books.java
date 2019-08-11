@@ -1,17 +1,25 @@
 package my.learning.project.schema;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Books implements Serializable {
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @ApiModelProperty(value = "Book ID")
     private Integer id;
 
+    @ApiModelProperty(value = "Book Name")
     private String name;
 
+    @ApiModelProperty(value = "Book copies allowed")
     private Integer noOfCopies;
 
+    @ApiModelProperty(value = "Users to whom books are issued")
     private Set<Integer> users = new HashSet<>();
 
     public Integer getId() {
