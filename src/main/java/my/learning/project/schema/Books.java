@@ -16,7 +16,7 @@ public class Books implements Serializable {
     @ApiModelProperty(value = "Book Name")
     private String name;
 
-    @ApiModelProperty(value = "Book copies allowed")
+    @ApiModelProperty(value = "Number of copies")
     private Integer noOfCopies;
 
     @ApiModelProperty(value = "Users to whom books are issued")

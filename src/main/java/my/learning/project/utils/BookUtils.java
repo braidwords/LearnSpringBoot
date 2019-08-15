@@ -13,6 +13,9 @@ public class BookUtils {
 
     /*Book (Domain) <-> Books (Schema) */
 
+    private BookUtils() {
+    }
+
     public static Books domainToSchemaBook(Book book) {
         Books books = new Books();
         books.setId(book.getId());
@@ -37,8 +40,10 @@ public class BookUtils {
         bookDomain.setId(bookSchema.getId());
         bookDomain.setName(bookSchema.getName());
         bookDomain.setNoOfCopies(bookSchema.getNoOfCopies());
-        for (Integer userId : bookSchema.getUsers()) {
-            bookDomain.getUsers().add(userRepository.getOne(userId));
+        if (null != bookSchema.getUsers()) {
+            for (Integer userId : bookSchema.getUsers()) {
+                bookDomain.getUsers().add(userRepository.getOne(userId));
+            }
         }
         return bookDomain;
     }

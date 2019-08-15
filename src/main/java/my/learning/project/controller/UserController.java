@@ -27,7 +27,7 @@ public class UserController implements IUserController {
     @ResponseBody
     @GetMapping("/{id}")
     @ApiOperation(value = "Get a specific user", tags = "User management")
-    public Users getSpecificUser(int id) throws NotFoundException {
+    public Users getSpecificUser(@PathVariable int id) throws NotFoundException {
         return userService.getSpecificUser(id);
     }
 
