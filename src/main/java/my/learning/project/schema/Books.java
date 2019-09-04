@@ -2,7 +2,6 @@ package my.learning.project.schema;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
-
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;

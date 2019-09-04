@@ -2,6 +2,7 @@ package my.learning.project.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import my.learning.project.exception.BadRequestException;
 import my.learning.project.schema.Users;
 import my.learning.project.service.LibraryService;
 import my.learning.project.service.UserService;
@@ -29,7 +30,7 @@ public class LibraryController implements ILibraryController {
         } else if (type == 'R') {
             user = libraryService.returnBook(userID, bookID);
         } else {
-            throw new Exception("Only I (Issue) and R (Return) are allowed in the request along with userid and bookid");
+            throw new BadRequestException("Only I (Issue) and R (Return) are allowed in the request along with userid and bookid");
         }
         return user;
     }
